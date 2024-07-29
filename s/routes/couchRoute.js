@@ -1,0 +1,11 @@
+const express = require("express")
+ const router = express.Router()
+ const couchController = require("../controllers/couchController")
+ const verifyJWT = require("../middleware/verifyJWT")
+ router.use(verifyJWT)
+ router.get("/",couchController.getAllCouches)
+ router.get("/:id", couchController.getCouchById)
+ router.post("/", couchController.createNewCouch)
+ router.delete("/:id",couchController.deleteCouch)
+ router.put("/:id",couchController.updateCouch)
+ module.exports = router
